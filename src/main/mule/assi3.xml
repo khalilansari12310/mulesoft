@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="bcd184d7-82e0-4c36-b300-3c2027a0b7bf" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="assi3Flow" doc:id="da488e51-3cea-4d5d-806b-7ed0cf817d46" >
+		<http:listener doc:name="Listener" doc:id="7cdca04f-d5e0-4b26-9d3e-7b6b3a9353ef" config-ref="HTTP_Listener_config" path="/logger" outputMimeType="application/json" outputEncoding="UTF-8">
+			<ee:repeatable-file-store-stream bufferUnit="MB" />
+		</http:listener>
+		<set-payload value='&lt;personal&gt;&lt;name&gt;khalil&lt;/name&gt;&lt;lastname&gt;ansari&lt;/lastname&gt;&lt;/personal&gt;' doc:name="Set Payload" doc:id="25db3cac-eac4-406e-bd84-6ab06fbb9f87" mimeType="application/json" encoding="UTF-8"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6022e642-a869-45d5-89fc-b5f104c5b6b4" message='#[payload]' />
+		<set-variable value="#[uuid()]" doc:name="Set Variable" doc:id="42e9dc3f-3642-4eb3-a9af-79657de25e6a" variableName="uuid"/>
+		<logger level="INFO" doc:name="Logger" doc:id="75f62da4-f512-4a48-8460-66ce36790f47" message="#[correlationId]"/>
+	</flow>
+</mule>

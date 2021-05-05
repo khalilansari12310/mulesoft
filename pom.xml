@@ -39,7 +39,7 @@
 					<password>Ansari@123</password>
 					<!-- Environment Parameter -->
 					<environment>Sandbox</environment>
-					<applicationName>mulesoft</applicationName>
+					<applicationName>assi123</applicationName>
 					<workerType>MICRO</workerType>
 					</cloudHubDeployment>
 				</configuration>

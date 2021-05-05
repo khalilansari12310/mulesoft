@@ -33,7 +33,7 @@
 				<configuration>
 					<cloudHubDeployment>
 					<uri>https://anypoint.mulesoft.com</uri>
-					<muleVersion>4.2.0</muleVersion>
+					<muleVersion>4.3.0</muleVersion>
 					<!-- Deploy User Parameter -->
 					<username>khalil</username>
 					<password>Ansari@123</password>
